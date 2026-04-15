@@ -34,7 +34,8 @@ namespace LiteTools.Core
                 ["ImportError"] = "Erro ao importar: ",
                 ["SettingsSaved"] = "Configurações do Host salvas e aplicadas com sucesso!",
                 ["CaptureProcessed"] = "Captura processada com sucesso!",
-                ["PluginsActivated"] = "plugin(s) ativado(s)."
+                ["PluginsActivated"] = "plugin(s) ativado(s).",
+                ["GitHubLink"] = "Página Oficial no GitHub"
             },
             ["en-US"] = new()
             {
@@ -58,7 +59,8 @@ namespace LiteTools.Core
                 ["ImportError"] = "Import error: ",
                 ["SettingsSaved"] = "Host settings saved and applied successfully!",
                 ["CaptureProcessed"] = "Capture processed successfully!",
-                ["PluginsActivated"] = "plugin(s) activated."
+                ["PluginsActivated"] = "plugin(s) activated.",
+                ["GitHubLink"] = "Official GitHub Page"
             },
             ["es-ES"] = new()
             {
@@ -82,7 +84,8 @@ namespace LiteTools.Core
                 ["ImportError"] = "Error al importar: ",
                 ["SettingsSaved"] = "¡Configuraciones del Host guardadas y aplicadas con éxito!",
                 ["CaptureProcessed"] = "¡Captura procesada con éxito!",
-                ["PluginsActivated"] = "plugin(s) activado(s)."
+                ["PluginsActivated"] = "plugin(s) activado(s).",
+                ["GitHubLink"] = "Página Oficial en GitHub"
             },
             ["fr-FR"] = new()
             {
@@ -106,7 +109,8 @@ namespace LiteTools.Core
                 ["ImportError"] = "Erreur d'importation : ",
                 ["SettingsSaved"] = "Paramètres de l'hôte enregistrés et appliqués avec succès !",
                 ["CaptureProcessed"] = "Capture traitée avec succès !",
-                ["PluginsActivated"] = "plugin(s) activé(s)."
+                ["PluginsActivated"] = "plugin(s) activé(s).",
+                ["GitHubLink"] = "Page GitHub Officielle"
             },
             ["de-DE"] = new()
             {
@@ -130,7 +134,8 @@ namespace LiteTools.Core
                 ["ImportError"] = "Importfehler: ",
                 ["SettingsSaved"] = "Host-Einstellungen erfolgreich gespeichert und angewendet!",
                 ["CaptureProcessed"] = "Aufnahme erfolgreich verarbeitet!",
-                ["PluginsActivated"] = "Plugin(s) aktiviert."
+                ["PluginsActivated"] = "Plugin(s) aktiviert.",
+                ["GitHubLink"] = "Offizielle GitHub-Seite"
             },
             ["it-IT"] = new()
             {
@@ -154,7 +159,8 @@ namespace LiteTools.Core
                 ["ImportError"] = "Errore di importazione: ",
                 ["SettingsSaved"] = "Impostazioni dell'host salvate e applicate con successo!",
                 ["CaptureProcessed"] = "Cattura elaborata con successo!",
-                ["PluginsActivated"] = "plugin attivato/i."
+                ["PluginsActivated"] = "plugin attivato/i.",
+                ["GitHubLink"] = "Pagina Ufficiale su GitHub"
             }
         };
 

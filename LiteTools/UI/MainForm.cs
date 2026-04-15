@@ -9,7 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace LiteTools
+namespace LiteTools.UI
 {
     public partial class MainForm : Form, IImagePublisher
     {

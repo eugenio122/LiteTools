@@ -1,4 +1,4 @@
-﻿namespace LiteTools
+﻿namespace LiteTools.UI
 {
     partial class MainForm
     {

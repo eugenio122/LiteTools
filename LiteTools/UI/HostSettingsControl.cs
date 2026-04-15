@@ -2,6 +2,7 @@
 using LiteTools.Models;
 using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -19,7 +20,6 @@ namespace LiteTools.UI
 
         private HostSettings _settings;
 
-        // Evento que avisa o MainForm para recarregar tudo após salvar
         public event Action RequestReload;
 
         public HostSettingsControl()
@@ -34,7 +34,6 @@ namespace LiteTools.UI
             this.Size = new Size(600, 450);
             this.BackColor = SystemColors.ControlLightLight;
 
-            // Uso do LanguageManager para todos os textos
             Label lblTitle = new Label { Text = LanguageManager.GetString("HostSettingsTitle"), Font = new Font("Segoe UI", 14, FontStyle.Bold), AutoSize = true, Location = new Point(20, 20) };
             this.Controls.Add(lblTitle);
 
@@ -52,7 +51,7 @@ namespace LiteTools.UI
             cmbLanguage.Items.AddRange(new object[] { "pt-BR", "en-US", "es-ES", "fr-FR", "de-DE", "it-IT" });
             this.Controls.Add(cmbLanguage);
 
-            // Gestão de Plugins (Ativar / Desativar)
+            // Gestão de Plugins
             Label lblPlugins = new Label { Text = LanguageManager.GetString("PluginsManagement"), AutoSize = true, Location = new Point(25, 190) };
             this.Controls.Add(lblPlugins);
 
@@ -68,6 +67,30 @@ namespace LiteTools.UI
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.Click += BtnSave_Click;
             this.Controls.Add(btnSave);
+
+            // =========================================================
+            // INFORMAÇÕES DE VERSÃO E GITHUB (RODAPÉ)
+            // =========================================================
+            Label lblVersion = new Label { Text = "LiteTools v1.0.0", AutoSize = true, Location = new Point(22, 385), ForeColor = Color.Gray };
+            this.Controls.Add(lblVersion);
+
+            LinkLabel lnkGitHub = new LinkLabel { Text = LanguageManager.GetString("GitHubLink"), AutoSize = true, Location = new Point(22, 405), LinkColor = Color.FromArgb(0, 102, 204) };
+            lnkGitHub.LinkClicked += (s, e) =>
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "https://github.com/eugenio122/LiteTools/",
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao abrir o link: {ex.Message}", "LiteTools", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+            this.Controls.Add(lnkGitHub);
         }
 
         private void LoadData()
@@ -126,7 +149,6 @@ namespace LiteTools.UI
             _settings.ShowNotifications = chkShowNotifications.Checked;
             _settings.Language = cmbLanguage.SelectedItem.ToString();
 
-            // Reconstrói a lista de plugins desativados
             _settings.DisabledPlugins.Clear();
             for (int i = 0; i < clbPlugins.Items.Count; i++)
             {
@@ -139,7 +161,6 @@ namespace LiteTools.UI
             _settings.Save();
             ApplyWindowsStartup(_settings.StartWithWindows);
 
-            // Avisa a Nave-Mãe que tem de reiniciar e carregar as novas DLLs/Idiomas
             RequestReload?.Invoke();
 
             MessageBox.Show(LanguageManager.GetString("SettingsSaved"), "LiteTools", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,7 +176,7 @@ namespace LiteTools.UI
                     else key.DeleteValue("LiteToolsHost", false);
                 }
             }
-            catch { } // Silenciado para evitar popups se não tiver permissão de Admin
+            catch { }
         }
     }
 }
