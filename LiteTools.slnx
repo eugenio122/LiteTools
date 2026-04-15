@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LiteTools.Interfaces/LiteTools.Interfaces.csproj" Id="b9c3fd14-0a27-4324-8211-48aec8085dc0" />
+  <Project Path="LiteTools/LiteTools.csproj" />
+</Solution>
