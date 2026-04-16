@@ -85,6 +85,12 @@ namespace LiteTools.UI
 
         private void ConfigureSystemTray()
         {
+            if (trayIcon != null)
+            {
+                trayIcon.Visible = false;
+                trayIcon.Dispose();
+            }
+
             trayMenu = new ContextMenuStrip();
             trayMenu.Items.Add(LanguageManager.GetString("TrayOpenHost"), null, OnOpenSettings);
             trayMenu.Items.Add(new ToolStripSeparator());
@@ -95,11 +101,12 @@ namespace LiteTools.UI
 
             trayIcon = new NotifyIcon();
             trayIcon.Text = "LiteTools - QA Host";
-            trayIcon.Icon = SystemIcons.Application;
+
+            // Aqui você pode usar o seu novo ícone laranja quando estiver pronto!
+            trayIcon.Icon = this.Icon ?? SystemIcons.Application;
+
             trayIcon.ContextMenuStrip = trayMenu;
             trayIcon.Visible = true;
-
-            // Duplo clique na bandeja ressuscita a janela
             trayIcon.DoubleClick += OnOpenSettings;
         }
 
@@ -178,18 +185,17 @@ namespace LiteTools.UI
             {
                 var hostSettingsUI = new HostSettingsControl();
 
-                // Ao salvar, atualizamos a linguagem na memória e recarregamos!
                 hostSettingsUI.RequestReload += () =>
                 {
-                    LanguageManager.CurrentLanguage = HostSettings.Load().Language; // Atualiza a RAM
-
-                    // Recarrega todos os textos visuais da janela base (MainForm)
+                    LanguageManager.CurrentLanguage = HostSettings.Load().Language;
                     this.Text = LanguageManager.GetString("AppTitle");
-                    ConfigureSystemTray(); // Atualiza os textos do Tray
+
+                    // Recria o menu da bandeja com os novos textos traduzidos
+                    ConfigureSystemTray();
 
                     foreach (var plugin in _activePlugins) try { plugin.Shutdown(); } catch { }
                     _activePlugins.Clear();
-                    LoadPlugins(); // Carrega o menu com o novo idioma
+                    LoadPlugins();
                 };
 
                 hostSettingsUI.Dock = DockStyle.Fill;
@@ -210,6 +216,7 @@ namespace LiteTools.UI
                 pnlContent.Controls.Add(new Label { Text = LanguageManager.GetString("NoPluginSettings"), AutoSize = true });
             }
         }
+
 
         // ====================================================================
         // AÇÕES DO TRAY MENU
@@ -239,6 +246,11 @@ namespace LiteTools.UI
             trayIcon.Visible = false;
             foreach (var plugin in _activePlugins) try { plugin.Shutdown(); } catch { }
             Application.Exit();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
