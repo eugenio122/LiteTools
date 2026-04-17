@@ -1,4 +1,4 @@
-# LiteTools 
+# LiteTools :gear:
 
 O **LiteTools** é a plataforma base (Nave-mãe) de código aberto projetada para unificar, orquestrar e potencializar ferramentas de Quality Assurance (QA) em ambientes corporativos. Desenvolvido em C# (.NET 10) e Windows Forms, ele atua como um motor central que carrega plugins dinamicamente (como o LiteShot e o LiteFlow), gerenciando a comunicação entre eles, configurações unificadas e execução em segundo plano com altíssima performance.
 
