@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using LiteTools.Interfaces; // IMPORTANTE: Referencia a interface do contrato
 
 namespace LiteTools.Core
 {
     /// <summary>
-    /// O motor central de mensagens. 
-    /// Agora vive APENAS no Host. Os plugins não sabem da sua existência, 
-    /// eles comunicam apenas através das interfaces.
+    /// O motor central de mensagens (Mediator). 
+    /// Implementa o IEventBus para ser injetado nos plugins.
     /// </summary>
-    public class EventBus
+    public class EventBus : IEventBus
     {
         private readonly Dictionary<Type, List<Delegate>> _subscribers = new Dictionary<Type, List<Delegate>>();
 
