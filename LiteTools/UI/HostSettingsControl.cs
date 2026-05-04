@@ -144,7 +144,7 @@ namespace LiteTools.UI
 
             // ================= ROW 6: Rodapé =================
             FlowLayoutPanel pnlFooter = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, Dock = DockStyle.Fill };
-            Label lblVersion = new Label { Text = "LiteTools v1.0.0", AutoSize = true, ForeColor = Color.Gray };
+            Label lblVersion = new Label { Text = "LiteTools v1.1.0", AutoSize = true, ForeColor = Color.Gray };
             LinkLabel lnkGitHub = new LinkLabel { Text = LanguageManager.GetString("GitHubLink"), AutoSize = true, LinkColor = Color.FromArgb(0, 120, 215), Cursor = Cursors.Hand };
             lnkGitHub.LinkClicked += (s, e) => { try { Process.Start(new ProcessStartInfo { FileName = "https://github.com/eugenio122/LiteTools/", UseShellExecute = true }); } catch { } };
             pnlFooter.Controls.AddRange(new Control[] { lblVersion, lnkGitHub });
